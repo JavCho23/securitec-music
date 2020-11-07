@@ -1,17 +1,17 @@
 const request = require("../helpers/request");
 const pagination = require("../helpers/pagination");
-const ArtistLister = require("../core/artist/aplication/artist_lister");
-const InMemoryArtistRepository = require("../core/artist/infrastructure/in_memory_artist_repository");
+const SongLister = require("../core/song/aplication/song_lister");
+const InMemorySongRepository = require("../core/song/infrastructure/in_memory_song_repository");
 exports.list = async function (req, res) {
   try {
-    const artistLister = new ArtistLister(new InMemoryArtistRepository());
+    const songLister = new SongLister(new InMemorySongRepository());
     const options = pagination.getPaginationOptions(req);
-    const artists = await artistLister.call(options.page, options.limit);
+    const songs = await songLister.call(options.page, options.limit);
     pagination.setPaginationHeaders(res, {
       page: options.page,
       limit: options.limit,
     });
-    res.json(artists.map((artist) => artist.toJson()));
+    res.json(songs.map((song) => song.toJson()));
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });
