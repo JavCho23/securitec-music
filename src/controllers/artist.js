@@ -25,7 +25,7 @@ exports.list = async function (req, res) {
 exports.read = async function (req, res) {
   try {
     const artistFinder = new ArtistFinder(new ArtistRepository());
-    const artist = await artistFinder.call(req.params.name);
+    const artist = await artistFinder.call(req.params.id);
     res.json(artist.toJson());
   } catch (error) {
     console.log(error);
@@ -37,7 +37,7 @@ exports.create = async function (req, res) {
   try {
     const artistCreator = new ArtistCreator(new ArtistRepository());
     const artist = await artistCreator.call(
-      new Artist(req.body.name, req.body.about, req.body.nationality)
+      new Artist(0, req.body.name, req.body.about, req.body.nationality)
     );
     res.status(201).json(artist.toJson());
   } catch (error) {
@@ -49,7 +49,12 @@ exports.update = async function (req, res) {
   try {
     const artistUpdater = new ArtistUpdater(new ArtistRepository());
     const artist = await artistUpdater.call(
-      new Artist(req.params.name, req.body.about, req.body.nationality)
+      new Artist(
+        req.params.id,
+        req.body.name,
+        req.body.about,
+        req.body.nationality
+      )
     );
     res.json(artist.toJson());
   } catch (error) {
