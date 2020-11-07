@@ -1,10 +1,10 @@
 const request = require("../helpers/request");
 const pagination = require("../helpers/pagination");
 const AlbumLister = require("../core/album/aplication/album_lister");
-const InMemoryAlbumRepository = require("../core/album/infrastructure/in_memory_album_repository");
+const AlbumRepository = require("../core/album/infrastructure/mysql_album_repository");
 exports.list = async function (req, res) {
   try {
-    const albumLister = new AlbumLister(new InMemoryAlbumRepository());
+    const albumLister = new AlbumLister(new AlbumRepository());
     const options = pagination.getPaginationOptions(req);
     const albums = await albumLister.call(options.page, options.limit);
     pagination.setPaginationHeaders(res, {

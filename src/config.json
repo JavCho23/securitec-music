@@ -1,17 +1,17 @@
 {
-  "server":{
-    "port":"3000"
+  "server": {
+    "port": "3000"
   },
-  "pagination":{
-    "defaultPage":"1",
-    "defaultLimit":"10"
+  "pagination": {
+    "defaultPage": "1",
+    "defaultLimit": "10"
   },
-  "db":{
-    "mysql":{
+  "db": {
+    "mysql": {
       "host": "localhost",
       "user": "root",
       "password": "",
-      "database": "securitec-music"
+      "database": "securitec_music"
     }
   }
 }

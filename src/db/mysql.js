@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const config = require("../config.json");
-const InternalServerError = require("../domain/error/internal_server_error");
+const InternalServerError = require("../errors/internal_server_error");
 const connection = mysql.createConnection({
   host: config.db.mysql.host,
   user: config.db.mysql.user,
