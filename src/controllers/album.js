@@ -3,6 +3,7 @@ const pagination = require("../helpers/pagination");
 const AlbumLister = require("../core/album/aplication/album_lister");
 const AlbumRepository = require("../core/album/infrastructure/mysql_album_repository");
 const AlbumListerByArtist = require("../core/album/aplication/album_lister_by_artist");
+const AlbumFinder = require("../core/album/aplication/album_finder");
 exports.list = async function (req, res) {
   try {
     const albumLister = new AlbumLister(new AlbumRepository());
@@ -19,7 +20,6 @@ exports.list = async function (req, res) {
     });
     res.json(albums.map((album) => album.toJson()));
   } catch (error) {
-    console.log(error);
     res.status(error.responseCode).json({ message: error.message });
   }
 };
@@ -37,6 +37,16 @@ exports.listByArtist = async function (req, res) {
       limit: options.limit,
     });
     res.json(albums.map((album) => album.toJson()));
+  } catch (error) {
+    res.status(error.responseCode).json({ message: error.message });
+  }
+};
+
+exports.read = async function (req, res) {
+  try {
+    const albumFinder = new AlbumFinder(new AlbumRepository());
+    const album = await albumFinder.call(req.params.id);
+    res.json(album.toJson());
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });
