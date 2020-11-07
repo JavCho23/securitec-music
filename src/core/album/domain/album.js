@@ -1,5 +1,6 @@
 class Album {
-  constructor(name, description, coverPage, year, artist) {
+  constructor(id, name, description, coverPage, year, artist) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.coverPage = coverPage;
@@ -9,6 +10,7 @@ class Album {
 
   toJson() {
     return {
+      id: this.id,
       name: this.name,
       description: this.description,
       coverPage: this.coverPage,
