@@ -52,5 +52,14 @@
       "duration": "5:20",
       "album": "Some album"
     }
+  ],
+  "album": [
+    {
+      "name": "Song 1",
+      "coverPage": "url",
+      "description": "Some album",
+      "year": "2010",
+      "artist": "Some Artist"
+    }
   ]
 }
