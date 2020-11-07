@@ -6,8 +6,8 @@ exports.getPaginationOptions = function (req) {
       ? parseInt(req.query.page)
       : config.pagination.defaultPage;
   const limit =
-    req.query.pageSize !== undefined
-      ? parseInt(req.query.pageSize)
+    req.query.limit !== undefined
+      ? parseInt(req.query.limit)
       : config.pagination.defaultLimit;
 
   return {
