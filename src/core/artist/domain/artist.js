@@ -2,7 +2,7 @@ const InvalidValueError = require("../../../errors/invalid_value_error");
 
 class Artist {
   constructor(id, name, about, nationality) {
-    if (!name || !about || !nationality) throw new InvalidValueError();
+    if (!name || !nationality) throw new InvalidValueError();
     this.id = id;
     this.name = name;
     this.about = about;
