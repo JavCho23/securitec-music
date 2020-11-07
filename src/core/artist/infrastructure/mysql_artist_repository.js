@@ -4,10 +4,10 @@ const db = require("../../../db/mysql");
 const RejectedError = require("../../../errors/rejected_error");
 const NoFoundError = require("../../../errors/no_found_error");
 class InMemoryArtistRepository extends ArtistRepository {
-  async list(page, limit) {
+  async list(page, limit, search) {
     const artists = await db.doQuery(
-      `SELECT id, name,about,nationality_id FROM artist WHERE validity = true ORDER BY id LIMIT ? OFFSET ? `,
-      [parseInt(limit), (page - 1) * limit]
+      `SELECT id, name,about,nationality_id FROM artist WHERE validity = true AND name LIKE ? ORDER BY id LIMIT ? OFFSET ? `,
+      [search + "%", parseInt(limit), (page - 1) * limit]
     );
     return artists.map(
       (artist) =>

@@ -10,8 +10,13 @@ const ArtistDeleter = require("../core/artist/aplication/artist_deleter");
 exports.list = async function (req, res) {
   try {
     const artistLister = new ArtistLister(new ArtistRepository());
+    const params = request.getFilteringOptions(req, ["search"]);
     const options = pagination.getPaginationOptions(req);
-    const artists = await artistLister.call(options.page, options.limit);
+    const artists = await artistLister.call(
+      options.page,
+      options.limit,
+      params.search ? params.search : ""
+    );
     pagination.setPaginationHeaders(res, {
       page: options.page,
       limit: options.limit,
