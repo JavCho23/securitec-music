@@ -6,6 +6,7 @@ const ArtistFinder = require("../core/artist/aplication/artist_finder");
 const ArtistCreator = require("../core/artist/aplication/artist_creator");
 const Artist = require("../core/artist/domain/artist");
 const ArtistUpdater = require("../core/artist/aplication/artist_updater");
+const ArtistDeleter = require("../core/artist/aplication/artist_deleter");
 exports.list = async function (req, res) {
   try {
     const artistLister = new ArtistLister(new ArtistRepository());
@@ -57,6 +58,17 @@ exports.update = async function (req, res) {
       )
     );
     res.json(artist.toJson());
+  } catch (error) {
+    console.log(error);
+    res.status(error.responseCode).json({ message: error.message });
+  }
+};
+
+exports.delete = async function (req, res) {
+  try {
+    const artistDeleter = new ArtistDeleter(new ArtistRepository());
+    const artist = await artistDeleter.call(req.params.id);
+    res.status(204).json({});
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });
