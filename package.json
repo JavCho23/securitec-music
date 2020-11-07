@@ -2,7 +2,7 @@
   "name": "securitec_music",
   "version": "1.0.0",
   "description": "Api to administrate securitec music",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "jest"
   },
