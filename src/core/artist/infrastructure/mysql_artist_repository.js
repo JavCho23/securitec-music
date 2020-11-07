@@ -3,7 +3,8 @@ const ArtistRepository = require("../domain/artist_repository");
 const db = require("../../../db/mysql");
 const RejectedError = require("../../../errors/rejected_error");
 const NoFoundError = require("../../../errors/no_found_error");
-class InMemoryArtistRepository extends ArtistRepository {
+const InvalidValueError = require("../../../errors/invalid_value_error");
+class MySqlArtistRepository extends ArtistRepository {
   async list(page, limit, search) {
     const artists = await db.doQuery(
       `SELECT id, name,about,nationality_id FROM artist WHERE validity = true AND name LIKE ? ORDER BY id LIMIT ? OFFSET ? `,
@@ -65,8 +66,16 @@ class InMemoryArtistRepository extends ArtistRepository {
   async delete(id) {
     const exists = await this.find("id", id);
     if (exists == null) throw new NoFoundError();
+    const artist = await db.doQuery(
+      `SELECT artist.id FROM artist 
+      INNER JOIN album ON  album.artist_id = artist.id 
+      WHERE artist.validity = true  AND album.validity = true AND artist.id = ?`,
+      id
+    );
+    if (artist.length > 0)
+      throw new InvalidValueError("You cant delete this artist, he still has albums registered");
     await db.doQuery(`UPDATE artist SET validity = false WHERE id = ? `, id);
   }
 }
 
-module.exports = InMemoryArtistRepository;
+module.exports = MySqlArtistRepository;
