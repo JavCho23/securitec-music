@@ -19,6 +19,23 @@ class InMemoryAlbumRepository extends AlbumRepository {
         )
     );
   }
+  async listByArtist(page, limit, artist) {
+    const albums = await db.doQuery(
+      `SELECT id, name,description,cover_page,year,artist_id FROM album WHERE validity = true AND artist_id = ?  ORDER BY id LIMIT ? OFFSET ? `,
+      [artist, parseInt(limit), (page - 1) * limit]
+    );
+    return albums.map(
+      (album) =>
+        new Album(
+          album.id,
+          album.name,
+          album.description,
+          album.cover_page,
+          album.year,
+          album.artist
+        )
+    );
+  }
   find(name) {}
 }
 
