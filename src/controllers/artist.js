@@ -2,6 +2,7 @@ const request = require("../helpers/request");
 const pagination = require("../helpers/pagination");
 const ArtistLister = require("../core/artist/aplication/artist_lister");
 const ArtistRepository = require("../core/artist/infrastructure/mysql_artist_repository");
+const ArtistFinder = require("../core/artist/aplication/artist_finder");
 exports.list = async function (req, res) {
   try {
     const artistLister = new ArtistLister(new ArtistRepository());
@@ -12,6 +13,17 @@ exports.list = async function (req, res) {
       limit: options.limit,
     });
     res.json(artists.map((artist) => artist.toJson()));
+  } catch (error) {
+    console.log(error);
+    res.status(error.responseCode).json({ message: error.message });
+  }
+};
+
+exports.read = async function (req, res) {
+  try {
+    const artistFinder = new ArtistFinder(new ArtistRepository());
+    const artist = await artistFinder.call(req.params.name);
+    res.json(artist.toJson());
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });
