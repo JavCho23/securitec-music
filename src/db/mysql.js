@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const config = require("../config.json");
-const InternalServerError = require("../errors/internal_server_error");
+const InvalidValueError = require("../errors/invalid_value_error");
 const connection = mysql.createConnection({
   host: config.db.mysql.host,
   user: config.db.mysql.user,
@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
 exports.doQuery = (query, values) => {
   return new Promise((resolve, reject) => {
     connection.query(query, values, (error, results) => {
-      if (error) return reject(new InternalServerError(error));
+      if (error) return reject(new InvalidValueError(error));
       return resolve(results);
     });
   });
