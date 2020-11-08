@@ -8,6 +8,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/api/v1", routes.index);
+app.get("/", (_, res) => {
+  res.status(200).json({
+    message:
+      "Welcome to securitec music API, to use the api please go to /api/v1",
+  });
+});
 
 const port = process.env.PORT || config.server.port;
 app.listen(port);
