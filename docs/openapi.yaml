@@ -6,6 +6,8 @@ info:
     name: Javier Chávez
     email: javier-arturo12@hotmail.com
     url: https://github.com/JavCho23/securitec-music
+servers:
+  - url: https://securitec-music.herokuapp.com/api/v1
 
 security:
   - Bearer: []
