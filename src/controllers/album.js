@@ -89,7 +89,7 @@ exports.update = async function (req, res) {
         req.params.id
       )
     );
-    res.status(201).json(album.toJson());
+    res.status(200).json(album.toJson());
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });
