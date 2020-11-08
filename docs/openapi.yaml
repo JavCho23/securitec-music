@@ -89,7 +89,7 @@ paths:
       tags: 
         - Artist
       requestBody:
-        $ref: "#/components/schemas/Artist"
+        $ref: "#/components/requestBodies/Artist"
       responses:
         201:
           description: OK
@@ -111,7 +111,6 @@ paths:
             application/json:
              schema:
               $ref: "#/components/responses/Default"
-
 
   /artists/{id}:
     get:
@@ -145,6 +144,8 @@ paths:
           required: true
           schema:
             $ref: "#/components/schemas/Integer"
+      requestBody:
+        $ref: "#/components/requestBodies/Artist"
       responses:
         200:
           description: OK
@@ -216,7 +217,7 @@ paths:
       tags: 
         - Album
       requestBody:
-        $ref: "#/components/schemas/Album"
+        $ref: "#/components/requestBodies/Album"
       responses:
         201:
           description: OK
@@ -264,7 +265,7 @@ paths:
       tags: 
         - Album
       requestBody:
-        $ref: "#/components/schemas/Album"
+        $ref: "#/components/requestBodies/Album"
       responses:
         201:
           description: OK
@@ -321,7 +322,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Album"                  
+                $ref: "#/components/schemas/AlbumDetail"                  
         default:
           $ref: "#/components/responses/Default"
     delete:
@@ -372,7 +373,7 @@ paths:
       tags: 
           - Song
       requestBody:
-        $ref: "#/components/schemas/Song"
+        $ref: "#/components/requestBodies/Song"
       responses:
         201:
           description: OK
@@ -402,7 +403,7 @@ paths:
       tags: 
         - Song
       requestBody:
-        $ref: "#/components/schemas/Song"
+        $ref: "#/components/requestBodies/Song"
       responses:
         201:
           description: OK
@@ -571,6 +572,27 @@ components:
           $ref: "#/components/schemas/Year"
         artist:
           $ref: "#/components/schemas/Integer"
+    AlbumDetail:
+      additionalProperties: false
+      type: object
+      properties:
+        id: 
+          $ref: "#/components/schemas/Integer"
+        name:
+          $ref: "#/components/schemas/PlainText"
+        description: 
+          $ref: "#/components/schemas/LargePlainText"
+        coverPage:
+         type: string
+         format: byte
+        year:
+          $ref: "#/components/schemas/Year"
+        totalSongs:
+          $ref: "#/components/schemas/Integer"
+        totalDuration:
+          $ref: "#/components/schemas/Duration"
+        artist:
+          $ref: "#/components/schemas/Integer"
     Country:
       additionalProperties: false
       type: object
@@ -654,3 +676,18 @@ components:
                 format: password
                 maxLength: 32
                 pattern: ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,32}$
+    Artist:
+      description: New Artist
+      required: true
+      content:
+        application/json:
+          schema:
+            additionalProperties: false
+            type: object
+            properties:
+              name:
+                $ref: "#/components/schemas/PlainText"
+              about: 
+                $ref: "#/components/schemas/LargePlainText"
+              nationality:
+                $ref: "#/components/schemas/Integer"
