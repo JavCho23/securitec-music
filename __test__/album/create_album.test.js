@@ -10,6 +10,6 @@ describe("Create a album ", () => {
       new Album(0, randomString(), randomString(), randomString(), 2020, 5)
     ); //Artist id must exist
     db.connection.destroy();
-    expect(!album.id).toBe(false);
+    expect(typeof album == Album).toBe(false);
   });
 });
