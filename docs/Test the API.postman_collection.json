@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "bda1c03e-317a-4846-9079-06eba724a550",
-		"name": "Test the API",
+		"_postman_id": "eb98508e-2134-4146-93e3-71a925ef7956",
+		"name": "Test Securitec music API",
 		"description": "Contact Support:\n Name: Javier Chávez\n Email: javier-arturo12@hotmail.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -70,7 +70,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "[\n {\n  \"id\": 455292,\n  \"name\": \"?q|Z\",\n  \"description\": \"%n\",\n  \"coverPage\": \"ut\",\n  \"year\": \"3466\",\n  \"artist\": 406987\n },\n {\n  \"id\": 623580,\n  \"name\": \"97C\",\n  \"description\": \"<W\",\n  \"coverPage\": \"sint magna culpa\",\n  \"year\": \"3882\",\n  \"artist\": 488712\n }\n]"
+											"body": "[\n {\n  \"id\": 461903,\n  \"name\": \"[!9V\",\n  \"description\": \"=6s>\",\n  \"coverPage\": \"veniam ea pariatur\",\n  \"year\": \"1125\",\n  \"artist\": 170999\n },\n {\n  \"id\": 656239,\n  \"name\": \"|+[\",\n  \"description\": \"`nO\",\n  \"coverPage\": \"minim nisi\",\n  \"year\": \"2025\",\n  \"artist\": 606509\n }\n]"
 										},
 										{
 											"name": "Something went Wrong",
@@ -104,7 +104,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n \"message\": \"X0]v\"\n}"
+											"body": "{\n \"message\": \"MuXr\"\n}"
 										}
 									]
 								},
@@ -112,7 +112,19 @@
 									"name": "Register one album",
 									"request": {
 										"method": "POST",
-										"header": [],
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"%.kw\",\n    \"description\": \"JfDB\",\n    \"coverPage\": \"<byte>\",\n    \"year\": \"1895\"\n}",
+											"options": {
+												"raw": {}
+											}
+										},
 										"url": {
 											"raw": "{{baseUrl}}/artists/:id/albums",
 											"host": [
@@ -131,40 +143,6 @@
 										}
 									},
 									"response": [
-										{
-											"name": "Requires authentication",
-											"originalRequest": {
-												"method": "POST",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/artists/:id/albums",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"artists",
-														":id",
-														"albums"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "Unauthorized",
-											"code": 401,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"message\": \"X0]v\"\n}"
-										},
 										{
 											"name": "This album already exists",
 											"originalRequest": {
@@ -188,6 +166,40 @@
 												}
 											},
 											"code": 420,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Your data has a invalid format",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/artists/:id/albums",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"artists",
+														":id",
+														"albums"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
 											"_postman_previewlanguage": "json",
 											"header": [
 												{
@@ -230,10 +242,10 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n \"id\": 381559,\n \"name\": \"rg\",\n \"description\": \"(4mV\",\n \"coverPage\": \"ullamco pariatur\",\n \"year\": \"3070\",\n \"artist\": 607949\n}"
+											"body": "{\n \"id\": 489820,\n \"name\": \"?`k7\",\n \"description\": \"wy}.\",\n \"coverPage\": \"ut mollit\",\n \"year\": \"3180\",\n \"artist\": 915595\n}"
 										},
 										{
-											"name": "Your data has a invalid format",
+											"name": "Requires authentication",
 											"originalRequest": {
 												"method": "POST",
 												"header": [],
@@ -254,8 +266,8 @@
 													]
 												}
 											},
-											"status": "Bad Request",
-											"code": 400,
+											"status": "Unauthorized",
+											"code": 401,
 											"_postman_previewlanguage": "json",
 											"header": [
 												{
@@ -264,7 +276,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{}"
+											"body": "{\n \"message\": \"MuXr\"\n}"
 										}
 									]
 								},
@@ -272,7 +284,19 @@
 									"name": "Update one album for one artist",
 									"request": {
 										"method": "PUT",
-										"header": [],
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"%.kw\",\n    \"description\": \"JfDB\",\n    \"coverPage\": \"<byte>\",\n    \"year\": \"1895\"\n}",
+											"options": {
+												"raw": {}
+											}
+										},
 										"url": {
 											"raw": "{{baseUrl}}/artists/:id/albums/:idAlbum",
 											"host": [
@@ -296,81 +320,6 @@
 									},
 									"response": [
 										{
-											"name": "Requires authentication",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/artists/:id/albums/:idAlbum",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"artists",
-														":id",
-														"albums",
-														":idAlbum"
-													],
-													"variable": [
-														{
-															"key": "id"
-														},
-														{
-															"key": "idAlbum"
-														}
-													]
-												}
-											},
-											"status": "Unauthorized",
-											"code": 401,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"message\": \"X0]v\"\n}"
-										},
-										{
-											"name": "This album already exists",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/artists/:id/albums/:idAlbum",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"artists",
-														":id",
-														"albums",
-														":idAlbum"
-													],
-													"variable": [
-														{
-															"key": "id"
-														},
-														{
-															"key": "idAlbum"
-														}
-													]
-												}
-											},
-											"code": 420,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{}"
-										},
-										{
 											"name": "OK",
 											"originalRequest": {
 												"method": "PUT",
@@ -409,6 +358,44 @@
 											"body": "{}"
 										},
 										{
+											"name": "Requires authentication",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/artists/:id/albums/:idAlbum",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"artists",
+														":id",
+														"albums",
+														":idAlbum"
+													],
+													"variable": [
+														{
+															"key": "id"
+														},
+														{
+															"key": "idAlbum"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"message\": \"MuXr\"\n}"
+										},
+										{
 											"name": "Your data has a invalid format",
 											"originalRequest": {
 												"method": "PUT",
@@ -436,6 +423,43 @@
 											},
 											"status": "Bad Request",
 											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "This album already exists",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/artists/:id/albums/:idAlbum",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"artists",
+														":id",
+														"albums",
+														":idAlbum"
+													],
+													"variable": [
+														{
+															"key": "id"
+														},
+														{
+															"key": "idAlbum"
+														}
+													]
+												}
+											},
+											"code": 420,
 											"_postman_previewlanguage": "json",
 											"header": [
 												{
@@ -468,9 +492,9 @@
 									],
 									"variable": [
 										{
-											"id": "19824473-758b-4a91-b354-e2c8b34367a5",
+											"id": "a1cf5665-7a4b-447b-a904-937efb0f7863",
 											"key": "Artist identifier",
-											"value": "419288",
+											"value": "575720",
 											"type": "string",
 											"description": "(Required) "
 										}
@@ -509,7 +533,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"id\": 237312,\n \"name\": \"r_Y-\",\n \"about\": \"Q%Y>\",\n \"nationality\": 608055\n}"
+									"body": "{\n \"id\": 110944,\n \"name\": \"iy=\",\n \"about\": \"-+wK\",\n \"nationality\": 700208\n}"
 								},
 								{
 									"name": "Something went Wrong",
@@ -542,7 +566,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
+									"body": "{\n \"message\": \"MuXr\"\n}"
 								}
 							]
 						},
@@ -550,7 +574,19 @@
 							"name": "Update artist",
 							"request": {
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"LH o\",\n    \"about\": \"=AM\\\"\",\n    \"nationality\": 959189\n}",
+									"options": {
+										"raw": {}
+									}
+								},
 								"url": {
 									"raw": "{{baseUrl}}/artists/:id",
 									"host": [
@@ -562,9 +598,9 @@
 									],
 									"variable": [
 										{
-											"id": "91316163-4d3a-4281-9849-5456231a12c9",
+											"id": "24c4d87b-a370-482e-9f85-988f38160d50",
 											"key": "Artist identifier",
-											"value": "419288",
+											"value": "575720",
 											"type": "string",
 											"description": "(Required) "
 										}
@@ -573,7 +609,7 @@
 							},
 							"response": [
 								{
-									"name": "Resource not found",
+									"name": "OK",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [],
@@ -593,8 +629,8 @@
 											]
 										}
 									},
-									"status": "Not Found",
-									"code": 404,
+									"status": "OK",
+									"code": 200,
 									"_postman_previewlanguage": "json",
 									"header": [
 										{
@@ -603,7 +639,40 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
+									"body": "{\n \"id\": 110944,\n \"name\": \"iy=\",\n \"about\": \"-+wK\",\n \"nationality\": 700208\n}"
+								},
+								{
+									"name": "Requires authentication",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/artists/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"artists",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"message\": \"MuXr\"\n}"
 								},
 								{
 									"name": "Your data has a invalid format",
@@ -639,6 +708,39 @@
 									"body": "{}"
 								},
 								{
+									"name": "Resource not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/artists/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"artists",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"message\": \"MuXr\"\n}"
+								},
+								{
 									"name": "This artist already exists",
 									"originalRequest": {
 										"method": "PUT",
@@ -669,72 +771,6 @@
 									],
 									"cookie": [],
 									"body": "{}"
-								},
-								{
-									"name": "Requires authentication",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/artists/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"artists",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "Unauthorized",
-									"code": 401,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
-								},
-								{
-									"name": "OK",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/artists/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"artists",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"id\": 237312,\n \"name\": \"r_Y-\",\n \"about\": \"Q%Y>\",\n \"nationality\": 608055\n}"
 								}
 							]
 						},
@@ -754,9 +790,9 @@
 									],
 									"variable": [
 										{
-											"id": "6d46d707-af43-45c3-9608-98d8151a2d96",
+											"id": "9567eafe-194a-4073-aae9-03b75b152bc2",
 											"key": "Artist identifier",
-											"value": "419288",
+											"value": "575720",
 											"type": "string",
 											"description": "(Required) "
 										}
@@ -861,7 +897,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
+									"body": "{\n \"message\": \"MuXr\"\n}"
 								}
 							]
 						},
@@ -888,40 +924,6 @@
 								}
 							},
 							"response": [
-								{
-									"name": "OK",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/artists/:id/songs",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"artists",
-												":id",
-												"songs"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "[\n {\n  \"id\": 903281,\n  \"name\": \"R9hQ\",\n  \"duration\": \"47:5\",\n  \"album\": 807918\n },\n {\n  \"id\": 129301,\n  \"name\": \"lCg|\",\n  \"duration\": \"9970\",\n  \"album\": 345073\n }\n]"
-								},
 								{
 									"name": "Something went Wrong",
 									"originalRequest": {
@@ -954,7 +956,41 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
+									"body": "{\n \"message\": \"MuXr\"\n}"
+								},
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/artists/:id/songs",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"artists",
+												":id",
+												"songs"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 946270,\n  \"name\": \"uY/W\",\n  \"duration\": \"8089\",\n  \"album\": 500345\n },\n {\n  \"id\": 993633,\n  \"name\": \"hH_\",\n  \"duration\": \"0178\",\n  \"album\": 565149\n }\n]"
 								}
 							]
 						}
@@ -978,33 +1014,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "Something went Wrong",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/artists",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"artists"
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"message\": \"X0]v\"\n}"
-						},
 						{
 							"name": "OK",
 							"originalRequest": {
@@ -1030,7 +1039,34 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n {\n  \"id\": 831923,\n  \"name\": \"`6]J\",\n  \"about\": \"sB-E\",\n  \"nationality\": 805819\n },\n {\n  \"id\": 924639,\n  \"name\": \"Kc}D\",\n  \"about\": \"=\",\n  \"nationality\": 940085\n }\n]"
+							"body": "[\n {\n  \"id\": 790706,\n  \"name\": \"Vw\",\n  \"about\": \"]2mj\",\n  \"nationality\": 354075\n },\n {\n  \"id\": 388539,\n  \"name\": \"+4nv\",\n  \"about\": \"oRws\",\n  \"nationality\": 56102\n }\n]"
+						},
+						{
+							"name": "Something went Wrong",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/artists",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"artists"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"message\": \"MuXr\"\n}"
 						}
 					]
 				},
@@ -1038,7 +1074,19 @@
 					"name": "Register new Artist",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"LH o\",\n    \"about\": \"=AM\\\"\",\n    \"nationality\": 959189\n}",
+							"options": {
+								"raw": {}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/artists",
 							"host": [
@@ -1050,6 +1098,33 @@
 						}
 					},
 					"response": [
+						{
+							"name": "Your data has a invalid format",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/artists",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"artists"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
 						{
 							"name": "OK",
 							"originalRequest": {
@@ -1075,7 +1150,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n \"id\": 237312,\n \"name\": \"r_Y-\",\n \"about\": \"Q%Y>\",\n \"nationality\": 608055\n}"
+							"body": "{\n \"id\": 110944,\n \"name\": \"iy=\",\n \"about\": \"-+wK\",\n \"nationality\": 700208\n}"
 						},
 						{
 							"name": "This artist already exists",
@@ -1093,33 +1168,6 @@
 								}
 							},
 							"code": 420,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{}"
-						},
-						{
-							"name": "Your data has a invalid format",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/artists",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"artists"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -1155,7 +1203,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n \"message\": \"X0]v\"\n}"
+							"body": "{\n \"message\": \"MuXr\"\n}"
 						}
 					]
 				}
@@ -1226,7 +1274,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "[\n {\n  \"id\": 903281,\n  \"name\": \"R9hQ\",\n  \"duration\": \"47:5\",\n  \"album\": 807918\n },\n {\n  \"id\": 129301,\n  \"name\": \"lCg|\",\n  \"duration\": \"9970\",\n  \"album\": 345073\n }\n]"
+											"body": "[\n {\n  \"id\": 946270,\n  \"name\": \"uY/W\",\n  \"duration\": \"8089\",\n  \"album\": 500345\n },\n {\n  \"id\": 993633,\n  \"name\": \"hH_\",\n  \"duration\": \"0178\",\n  \"album\": 565149\n }\n]"
 										},
 										{
 											"name": "Something went Wrong",
@@ -1260,7 +1308,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n \"message\": \"X0]v\"\n}"
+											"body": "{\n \"message\": \"MuXr\"\n}"
 										}
 									]
 								},
@@ -1268,7 +1316,19 @@
 									"name": "Register one song",
 									"request": {
 										"method": "POST",
-										"header": [],
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"3l-U\",\n    \"duration\": \"8565\"\n}",
+											"options": {
+												"raw": {}
+											}
+										},
 										"url": {
 											"raw": "{{baseUrl}}/albums/:id/songs",
 											"host": [
@@ -1287,40 +1347,6 @@
 										}
 									},
 									"response": [
-										{
-											"name": "Your data has a invalid format",
-											"originalRequest": {
-												"method": "POST",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/albums/:id/songs",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"albums",
-														":id",
-														"songs"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "Bad Request",
-											"code": 400,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{}"
-										},
 										{
 											"name": "OK",
 											"originalRequest": {
@@ -1353,41 +1379,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n \"id\": 741753,\n \"name\": \"{1+X\",\n \"duration\": \"3441\",\n \"album\": 632938\n}"
-										},
-										{
-											"name": "Requires authentication",
-											"originalRequest": {
-												"method": "POST",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/albums/:id/songs",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"albums",
-														":id",
-														"songs"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "Unauthorized",
-											"code": 401,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"message\": \"X0]v\"\n}"
+											"body": "{\n \"id\": 311274,\n \"name\": \"B\",\n \"duration\": \"7642\",\n \"album\": 394713\n}"
 										},
 										{
 											"name": "This song already exists",
@@ -1421,6 +1413,74 @@
 											],
 											"cookie": [],
 											"body": "{}"
+										},
+										{
+											"name": "Requires authentication",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/albums/:id/songs",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"albums",
+														":id",
+														"songs"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"message\": \"MuXr\"\n}"
+										},
+										{
+											"name": "Your data has a invalid format",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/albums/:id/songs",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"albums",
+														":id",
+														"songs"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
 										}
 									]
 								},
@@ -1428,7 +1488,19 @@
 									"name": "Update one song for one album",
 									"request": {
 										"method": "PUT",
-										"header": [],
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"3l-U\",\n    \"duration\": \"8565\"\n}",
+											"options": {
+												"raw": {}
+											}
+										},
 										"url": {
 											"raw": "{{baseUrl}}/albums/:id/songs/:idSong",
 											"host": [
@@ -1490,43 +1562,6 @@
 											"body": "{}"
 										},
 										{
-											"name": "This song already exists",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/albums/:id/songs/:idSong",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"albums",
-														":id",
-														"songs",
-														":idSong"
-													],
-													"variable": [
-														{
-															"key": "id"
-														},
-														{
-															"key": "idSong"
-														}
-													]
-												}
-											},
-											"code": 420,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{}"
-										},
-										{
 											"name": "Requires authentication",
 											"originalRequest": {
 												"method": "PUT",
@@ -1562,7 +1597,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n \"message\": \"X0]v\"\n}"
+											"body": "{\n \"message\": \"MuXr\"\n}"
 										},
 										{
 											"name": "Your data has a invalid format",
@@ -1601,6 +1636,43 @@
 											],
 											"cookie": [],
 											"body": "{}"
+										},
+										{
+											"name": "This song already exists",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/albums/:id/songs/:idSong",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"albums",
+														":id",
+														"songs",
+														":idSong"
+													],
+													"variable": [
+														{
+															"key": "id"
+														},
+														{
+															"key": "idSong"
+														}
+													]
+												}
+											},
+											"code": 420,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
 										}
 									]
 								}
@@ -1624,9 +1696,9 @@
 									],
 									"variable": [
 										{
-											"id": "77ecb4cd-0f18-4df5-b499-daaf5e4309fc",
+											"id": "b2db4137-24b8-45c0-aca4-409528abf77a",
 											"key": "Album identifier",
-											"value": "419288",
+											"value": "575720",
 											"type": "string",
 											"description": "(Required) "
 										}
@@ -1634,39 +1706,6 @@
 								}
 							},
 							"response": [
-								{
-									"name": "Something went Wrong",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/albums/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"albums",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "Internal Server Error",
-									"code": 500,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
-								},
 								{
 									"name": "OK",
 									"originalRequest": {
@@ -1698,7 +1737,40 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"id\": 381559,\n \"name\": \"rg\",\n \"description\": \"(4mV\",\n \"coverPage\": \"ullamco pariatur\",\n \"year\": \"3070\",\n \"artist\": 607949\n}"
+									"body": "{\n \"id\": 293256,\n \"name\": \"-!_\",\n \"description\": \"(77%\",\n \"coverPage\": \"enim non Ut reprehenderit\",\n \"year\": \"1748\",\n \"totalSongs\": 489231,\n \"totalDuration\": \"5683\",\n \"artist\": 421830\n}"
+								},
+								{
+									"name": "Something went Wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/albums/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"albums",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"message\": \"MuXr\"\n}"
 								}
 							]
 						},
@@ -1718,9 +1790,9 @@
 									],
 									"variable": [
 										{
-											"id": "bf3eda41-13ab-4a4d-9fa2-dc35bdd7d369",
+											"id": "d054d592-6e73-4b6e-a089-1c21b25d491d",
 											"key": "Album identifier",
-											"value": "419288",
+											"value": "575720",
 											"type": "string",
 											"description": "(Required) "
 										}
@@ -1728,72 +1800,6 @@
 								}
 							},
 							"response": [
-								{
-									"name": "Requires authentication",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/albums/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"albums",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "Unauthorized",
-									"code": 401,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
-								},
-								{
-									"name": "OK",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/albums/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"albums",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								},
 								{
 									"name": "You cant delete this album",
 									"originalRequest": {
@@ -1826,6 +1832,72 @@
 									],
 									"cookie": [],
 									"body": "{}"
+								},
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/albums/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"albums",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Requires authentication",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/albums/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"albums",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"message\": \"MuXr\"\n}"
 								}
 							]
 						}
@@ -1849,33 +1921,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "Something went Wrong",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/albums",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"albums"
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"message\": \"X0]v\"\n}"
-						},
 						{
 							"name": "OK",
 							"originalRequest": {
@@ -1901,7 +1946,34 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n {\n  \"id\": 455292,\n  \"name\": \"?q|Z\",\n  \"description\": \"%n\",\n  \"coverPage\": \"ut\",\n  \"year\": \"3466\",\n  \"artist\": 406987\n },\n {\n  \"id\": 623580,\n  \"name\": \"97C\",\n  \"description\": \"<W\",\n  \"coverPage\": \"sint magna culpa\",\n  \"year\": \"3882\",\n  \"artist\": 488712\n }\n]"
+							"body": "[\n {\n  \"id\": 461903,\n  \"name\": \"[!9V\",\n  \"description\": \"=6s>\",\n  \"coverPage\": \"veniam ea pariatur\",\n  \"year\": \"1125\",\n  \"artist\": 170999\n },\n {\n  \"id\": 656239,\n  \"name\": \"|+[\",\n  \"description\": \"`nO\",\n  \"coverPage\": \"minim nisi\",\n  \"year\": \"2025\",\n  \"artist\": 606509\n }\n]"
+						},
+						{
+							"name": "Something went Wrong",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/albums",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"albums"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"message\": \"MuXr\"\n}"
 						}
 					]
 				}
@@ -1930,9 +2002,9 @@
 									],
 									"variable": [
 										{
-											"id": "cb092414-7146-44d9-bcfb-095d72684c5b",
+											"id": "0926b0e2-991a-4613-b292-32e6cd7a0da1",
 											"key": "Song identifier",
-											"value": "419288",
+											"value": "575720",
 											"type": "string",
 											"description": "(Required) "
 										}
@@ -1940,39 +2012,6 @@
 								}
 							},
 							"response": [
-								{
-									"name": "Something went Wrong",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/songs/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"songs",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "Internal Server Error",
-									"code": 500,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
-								},
 								{
 									"name": "OK",
 									"originalRequest": {
@@ -2004,7 +2043,40 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"id\": 741753,\n \"name\": \"{1+X\",\n \"duration\": \"3441\",\n \"album\": 632938\n}"
+									"body": "{\n \"id\": 311274,\n \"name\": \"B\",\n \"duration\": \"7642\",\n \"album\": 394713\n}"
+								},
+								{
+									"name": "Something went Wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/songs/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"songs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"message\": \"MuXr\"\n}"
 								}
 							]
 						},
@@ -2024,9 +2096,9 @@
 									],
 									"variable": [
 										{
-											"id": "cbe3142e-7051-416d-9f35-f3971effcfd8",
+											"id": "c68dd284-fed8-466c-8c15-719016728713",
 											"key": "Song identifier",
-											"value": "419288",
+											"value": "575720",
 											"type": "string",
 											"description": "(Required) "
 										}
@@ -2034,39 +2106,6 @@
 								}
 							},
 							"response": [
-								{
-									"name": "Requires authentication",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/songs/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"songs",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "Unauthorized",
-									"code": 401,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
-								},
 								{
 									"name": "OK",
 									"originalRequest": {
@@ -2131,7 +2170,40 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"message\": \"X0]v\"\n}"
+									"body": "{\n \"message\": \"MuXr\"\n}"
+								},
+								{
+									"name": "Requires authentication",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/songs/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"songs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"message\": \"MuXr\"\n}"
 								}
 							]
 						}
@@ -2180,7 +2252,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n {\n  \"id\": 903281,\n  \"name\": \"R9hQ\",\n  \"duration\": \"47:5\",\n  \"album\": 807918\n },\n {\n  \"id\": 129301,\n  \"name\": \"lCg|\",\n  \"duration\": \"9970\",\n  \"album\": 345073\n }\n]"
+							"body": "[\n {\n  \"id\": 946270,\n  \"name\": \"uY/W\",\n  \"duration\": \"8089\",\n  \"album\": 500345\n },\n {\n  \"id\": 993633,\n  \"name\": \"hH_\",\n  \"duration\": \"0178\",\n  \"album\": 565149\n }\n]"
 						},
 						{
 							"name": "Something went Wrong",
@@ -2207,7 +2279,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n \"message\": \"X0]v\"\n}"
+							"body": "{\n \"message\": \"MuXr\"\n}"
 						}
 					]
 				}
@@ -2226,7 +2298,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nickname\": \"<string>\",\n    \"password\": \"<password>\"\n}",
+					"raw": "{\n    \"user\": \"<string>\",\n    \"password\": \"<password>\"\n}",
 					"options": {
 						"raw": {}
 					}
@@ -2267,7 +2339,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n \"message\": \"X0]v\"\n}"
+					"body": "{\n \"message\": \"MuXr\"\n}"
 				},
 				{
 					"name": "User not found",
@@ -2294,7 +2366,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n \"message\": \"X0]v\"\n}"
+					"body": "{\n \"message\": \"MuXr\"\n}"
 				},
 				{
 					"name": "Wrong password",
@@ -2321,7 +2393,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n \"message\": \"X0]v\"\n}"
+					"body": "{\n \"message\": \"MuXr\"\n}"
 				},
 				{
 					"name": "OK",
@@ -2348,7 +2420,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n \"token\": \"DjxM\"\n}"
+					"body": "{\n \"token\": \"kQCM\"\n}"
 				}
 			]
 		},
@@ -2368,33 +2440,6 @@
 				}
 			},
 			"response": [
-				{
-					"name": "Something went Wrong",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/countries",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"countries"
-							]
-						}
-					},
-					"status": "Internal Server Error",
-					"code": 500,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n \"message\": \"X0]v\"\n}"
-				},
 				{
 					"name": "OK",
 					"originalRequest": {
@@ -2420,7 +2465,34 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n {\n  \"id\": 171557,\n  \"name\": \"2z0Q\",\n  \"alphaCode\": \"RMK\",\n  \"nationality\": \"[RHW\"\n },\n {\n  \"id\": 15858,\n  \"name\": \"4\",\n  \"alphaCode\": \"OTQ\",\n  \"nationality\": \"\\\\fh\"\n }\n]"
+					"body": "[\n {\n  \"id\": 787135,\n  \"name\": \"9>_\",\n  \"alphaCode\": \"NVE\",\n  \"nationality\": \"n\"\n },\n {\n  \"id\": 824253,\n  \"name\": \"T\",\n  \"alphaCode\": \"EZJ\",\n  \"nationality\": \"OV9 \"\n }\n]"
+				},
+				{
+					"name": "Something went Wrong",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/countries",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"countries"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"message\": \"MuXr\"\n}"
 				}
 			]
 		}
@@ -2429,7 +2501,7 @@
 		{
 			"id": "baseUrl",
 			"key": "baseUrl",
-			"value": "/",
+			"value": "https://securitec-music.herokuapp.com/api/v1",
 			"type": "string"
 		}
 	],
