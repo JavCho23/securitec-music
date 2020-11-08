@@ -1,3 +1,5 @@
+const InvalidValueError = require("../../../errors/invalid_value_error");
+
 class Album {
   constructor(
     id,
@@ -9,6 +11,9 @@ class Album {
     totalSongs,
     totalDuration
   ) {
+    if (!name || !description || !coverPage || !year || !artist)
+      throw new InvalidValueError();
+
     this.id = id;
     this.name = name;
     this.description = description;

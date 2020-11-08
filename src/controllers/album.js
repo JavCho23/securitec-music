@@ -4,6 +4,8 @@ const AlbumLister = require("../core/album/aplication/album_lister");
 const AlbumRepository = require("../core/album/infrastructure/mysql_album_repository");
 const AlbumListerByArtist = require("../core/album/aplication/album_lister_by_artist");
 const AlbumFinder = require("../core/album/aplication/album_finder");
+const AlbumCreator = require("../core/album/aplication/album_creator");
+const Album = require("../core/album/domain/album");
 exports.list = async function (req, res) {
   try {
     const albumLister = new AlbumLister(new AlbumRepository());
@@ -47,6 +49,26 @@ exports.read = async function (req, res) {
     const albumFinder = new AlbumFinder(new AlbumRepository());
     const album = await albumFinder.call(req.params.id);
     res.json(album.toJson());
+  } catch (error) {
+    console.log(error);
+    res.status(error.responseCode).json({ message: error.message });
+  }
+};
+
+exports.create = async function (req, res) {
+  try {
+    const albumCreator = new AlbumCreator(new AlbumRepository());
+    const album = await albumCreator.call(
+      new Album(
+        0,
+        req.body.name,
+        req.body.description,
+        req.body.coverPage,
+        req.body.year,
+        req.params.id
+      )
+    );
+    res.status(201).json(album.toJson());
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });

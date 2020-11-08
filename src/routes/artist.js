@@ -5,6 +5,6 @@ const routes = express.Router();
 
 routes.route("/").get(artist.list).post(artist.create);
 routes.route("/:id").get(artist.read).put(artist.update).delete(artist.delete);
-routes.route("/:id/albums").get(album.listByArtist);
+routes.route("/:id/albums").get(album.listByArtist).post(album.create);
 
 exports.routes = routes;
