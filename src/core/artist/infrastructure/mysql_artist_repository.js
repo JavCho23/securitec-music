@@ -47,12 +47,14 @@ class MySqlArtistRepository extends ArtistRepository {
   async update(artist) {
     await this.find("id", artist.id);
     let exists = true;
+    let anotherArtist;
     try {
-      await this.find("name", artist.name);
+      anotherArtist = await this.find("name", artist.name);
     } catch (error) {
       exists = false;
     }
-    if (exists) throw new RejectedError("This artists already exists");
+    if (exists && anotherArtist.id != artist.id)
+      throw new RejectedError("This artists already exists");
     await db.doQuery(`UPDATE artist SET ? WHERE id = ? `, [
       {
         name: artist.name,
@@ -73,7 +75,9 @@ class MySqlArtistRepository extends ArtistRepository {
       id
     );
     if (artist.length > 0)
-      throw new InvalidValueError("You cant delete this artist, he still has albums registered");
+      throw new InvalidValueError(
+        "You cant delete this artist, he still has albums registered"
+      );
     await db.doQuery(`UPDATE artist SET validity = false WHERE id = ? `, id);
   }
 }
