@@ -13,5 +13,8 @@
       "password": "",
       "database": "securitec_music"
     }
+  },
+  "auth": {
+    "secret": "mysecretauth"
   }
 }
