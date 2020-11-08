@@ -2,7 +2,9 @@ const InvalidValueError = require("../../../errors/invalid_value_error");
 
 class Song {
   constructor(id, name, duration, album, artist) {
-    if (!name || !name || !duration) throw new InvalidValueError();
+    if (!name || !duration || !duration) throw new InvalidValueError();
+    if (!duration.match(/^\d+:[0-5]\d$/))
+      throw new InvalidValueError("Your duration has a invalid format");
     this.name = name;
     this.id = id;
     this.duration = duration;
