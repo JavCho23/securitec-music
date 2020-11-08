@@ -6,7 +6,13 @@ exports.list = async function (req, res) {
   try {
     const songLister = new SongLister(new SongRepository());
     const options = pagination.getPaginationOptions(req);
-    const songs = await songLister.call(options.page, options.limit);
+    const params = request.getFilteringOptions(req, ["search"]);
+
+    const songs = await songLister.call(
+      options.page,
+      options.limit,
+      params.search ? params.search : ""
+    );
     pagination.setPaginationHeaders(res, {
       page: options.page,
       limit: options.limit,

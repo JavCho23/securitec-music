@@ -1,5 +1,5 @@
 class SongRepository {
-  async list(page, limit) {}
+  async list(page, limit, search) {}
   async find(name) {}
 }
 

@@ -1,11 +1,11 @@
 const Song = require("../domain/song");
 const SongRepository = require("../domain/song_repository");
 const db = require("../../../db/mysql");
-class InMemorySongRepository extends SongRepository {
-  async list(page, limit) {
+class MySqlSongRepository extends SongRepository {
+  async list(page, limit, search) {
     const songs = await db.doQuery(
-      `SELECT name,duration,album_id FROM song ORDER BY id LIMIT ? OFFSET ? `,
-      [parseInt(limit), (page - 1) * limit]
+      `SELECT name,duration,album_id FROM song WHERE validity = true AND name LIKE ?   ORDER BY id LIMIT ? OFFSET ? `,
+      [search + "%", parseInt(limit), (page - 1) * limit]
     );
     return songs.map(
       (song) => new Song(song.name, song.duration, song.album_id)
@@ -14,4 +14,4 @@ class InMemorySongRepository extends SongRepository {
   find(name) {}
 }
 
-module.exports = InMemorySongRepository;
+module.exports = MySqlSongRepository;
