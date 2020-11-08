@@ -1,6 +1,6 @@
 class SongRepository {
   async list(page, limit, search) {}
-  async find(name) {}
+  async find(criteria, id) {}
 }
 
 module.exports = SongRepository;
