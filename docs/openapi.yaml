@@ -1,0 +1,654 @@
+openapi: "3.0.0"
+info:
+  title: Securitec Music API
+  version: 1.0.0
+  contact:
+    name: Javier Chávez
+    email: javier-arturo12@hotmail.com
+    url: https://github.com/JavCho23/securitec-music
+
+security:
+  - Bearer: []
+
+paths:
+  /session:
+    post:
+      summary: Create session and return token
+      tags:
+        - Authorization
+      requestBody:
+        $ref: "#/components/requestBodies/UserCredentials"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                additionalProperties: false
+                type: object
+                properties:
+                  token:
+                    $ref: "#/components/schemas/Token"
+        401:
+          description: Wrong password
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorObject"
+        404:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorObject"
+        default:
+          $ref: "#/components/responses/Default"
+   
+  /countries:
+    get:
+      summary: Get countries
+      tags:
+        - Artist
+      responses:
+        200:
+          description: OK
+          content: 
+            application/json:
+              schema: 
+                type: array
+                maxItems: 10
+                items:
+                  $ref: "#/components/schemas/Country"
+                                 
+        default:
+          $ref: "#/components/responses/Default"
+                    
+  /artists:
+    get: 
+      summary: Get all artists
+      tags:
+        - Artist
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 10
+                items:
+                  $ref: "#/components/schemas/Artist"
+        default:
+          $ref: "#/components/responses/Default"
+    post:
+      security:
+        - bearerAuth: []
+      summary: Register new Artist
+      tags: 
+        - Artist
+      requestBody:
+        $ref: "#/components/schemas/Artist"
+      responses:
+        201:
+          description: OK
+          content:
+           application/json:
+            schema:
+              $ref: "#/components/schemas/Artist"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        420:
+          description: This artist already exists
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+        400:
+          description: Your data has a invalid format
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+
+
+  /artists/{id}:
+    get:
+      summary: Get artist by id
+      tags: 
+        - Artist
+      parameters:
+        - in: path
+          name: Artist identifier
+          required: true
+          schema:
+            $ref: "#/components/schemas/Integer"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artist"                  
+        default:
+          $ref: "#/components/responses/Default"
+    put:
+      security:
+        - bearerAuth: []
+      summary: Update artist
+      tags:
+      - Artist
+      parameters:
+        - in: path
+          name: Artist identifier
+          required: true
+          schema:
+            $ref: "#/components/schemas/Integer"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artist"   
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        404:
+          $ref: "#/components/responses/NotFound"
+        420:
+          description: This artist already exists
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+        400:
+          description: Your data has a invalid format
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete a artist
+      tags:
+        - Artist
+      parameters:
+        - in: path
+          name: Artist identifier
+          required: true
+          schema:
+            $ref: "#/components/schemas/Integer"
+      responses:
+        204:
+          description: OK 
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        400:
+          description: You cant delete this artist
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+  /artists/{id}/albums:
+    get:
+      summary: Get all albums for one artist
+      tags:
+       - Artist
+       - Album
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 10
+                items:
+                  $ref: "#/components/schemas/Album"
+        default:
+          $ref: "#/components/responses/Default"
+    post:
+      security:
+        - bearerAuth: []
+      summary: Register one album
+      tags: 
+        - Album
+      requestBody:
+        $ref: "#/components/schemas/Album"
+      responses:
+        201:
+          description: OK
+          content:
+           application/json:
+            schema:
+              $ref: "#/components/schemas/Album"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        420:
+          description: This album already exists
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+        400:
+          description: Your data has a invalid format
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+  /artists/{id}/songs:
+    get:
+      summary: Get all songs by artist
+      tags: 
+        - Song
+        - Artist
+      responses:
+        200: 
+          description: OK
+          content: 
+            application/json:
+              schema: 
+                type: array
+                maxItems: 10
+                items:
+                  $ref: "#/components/schemas/Song"
+        default:
+          $ref: "#/components/responses/Default"   
+  /artists/{id}/albums/{idAlbum}:
+    put:
+      security:
+        - bearerAuth: []
+      summary: Update one album for one artist
+      tags: 
+        - Album
+      requestBody:
+        $ref: "#/components/schemas/Album"
+      responses:
+        201:
+          description: OK
+          content:
+           application/json:
+            schema:
+              $ref: "#/components/requestBodies/Album"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        420:
+          description: This album already exists
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+        400:
+          description: Your data has a invalid format
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+  /albums:
+    get:
+      summary: Get all albums
+      tags:
+        - Album
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 10
+                items:
+                  $ref: "#/components/schemas/Album"
+        default:
+          $ref: "#/components/responses/Default"
+
+  /albums/{id}:
+    get:
+      summary: Get album by id
+      tags: 
+        - Album
+      parameters:
+        - in: path
+          name: Album identifier
+          required: true
+          schema:
+            $ref: "#/components/schemas/Integer"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Album"                  
+        default:
+          $ref: "#/components/responses/Default"
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete a album
+      tags:
+        - Album
+      parameters:
+        - in: path
+          name: Album identifier
+          required: true
+          schema:
+            $ref: "#/components/schemas/Integer"
+      responses:
+        204:
+          description: OK 
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        400:
+          description: You cant delete this album
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+  /albums/{id}/songs:
+    get:
+      summary: Get all songs by album
+      tags: 
+        - Song
+        - Artist
+      responses:
+        200: 
+          description: OK
+          content: 
+            application/json:
+              schema: 
+                type: array
+                maxItems: 10
+                items:
+                  $ref: "#/components/schemas/Song"
+        default:
+          $ref: "#/components/responses/Default"     
+    post:
+      security:
+        - bearerAuth: []
+      summary: Register one song
+      tags: 
+          - Song
+      requestBody:
+        $ref: "#/components/schemas/Song"
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Song"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        420:
+          description: This song already exists
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/Default"
+        400:
+          description: Your data has a invalid format
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/Default"
+  /albums/{id}/songs/{idSong}:
+    put:
+      security:
+        - bearerAuth: []
+      summary: Update one song for one album
+      tags: 
+        - Song
+      requestBody:
+        $ref: "#/components/schemas/Song"
+      responses:
+        201:
+          description: OK
+          content:
+           application/json:
+            schema:
+              $ref: "#/components/requestBodies/Song"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        420:
+          description: This song already exists
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+        400:
+          description: Your data has a invalid format
+          content:
+            application/json:
+             schema:
+              $ref: "#/components/responses/Default"
+
+  /songs:
+    get:
+      summary: Get all songs
+      tags: 
+        - Song
+      responses:
+        200: 
+          description: OK
+          content: 
+            application/json:
+              schema: 
+                type: array
+                maxItems: 10
+                items:
+                  $ref: "#/components/schemas/Song"
+        default:
+          $ref: "#/components/responses/Default"
+  
+  /songs/{id}:
+    get:
+      summary: Get song by id
+      tags: 
+        - Song
+      parameters:
+        - in: path
+          name: Song identifier
+          required: true
+          schema:
+            $ref: "#/components/schemas/Integer"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Song"                  
+        default:
+          $ref: "#/components/responses/Default"
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete a song
+      tags:
+        - Song
+      parameters:
+        - in: path
+          name: Song identifier
+          required: true
+          schema:
+            $ref: "#/components/schemas/Integer"
+      responses:
+        204:
+          description: OK 
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Default"
+
+components:
+  schemas:
+    # Global schemas
+    Integer:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 999999
+    Token:
+      type: string
+      maxLength: 64
+      pattern: ^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$
+    PlainText:
+      type: string
+      pattern: ^[^:$#@^&*]+$
+      maxLength: 128
+    LargePlainText:
+      type: string
+      pattern: ^[^:$#@^&*]+$
+      maxLength: 1024
+    Duration:
+      type: string
+      pattern: ^\d+:[0-5]\d$
+      maxLength: 10
+    AlphaCode:
+      type: string
+      pattern: ^[A-Z]{3}$
+      maxLength: 3
+    Year:
+      type: string
+      pattern: ^[1-3]\d{3}$
+      maxLength: 4
+    ErrorObject:
+      additionalProperties: false
+      type: object
+      properties:
+        message:
+          type: string
+          maxLength: 512
+          pattern: ^[^:$#@^&*]+$
+    
+    UserNickname:
+      type: string
+      maxLength: 24
+      pattern: ^[a-zA-Z0-9]+$
+
+    Song:
+      additionalProperties: false
+      type: object
+      properties:
+        id: 
+          $ref: "#/components/schemas/Integer"
+        name:
+          $ref: "#/components/schemas/PlainText"
+        duration:
+          $ref: "#/components/schemas/Duration"
+        album:
+          $ref: "#/components/schemas/Integer"          
+
+    Artist:
+      additionalProperties: false
+      type: object
+      properties:
+        id: 
+          $ref: "#/components/schemas/Integer"
+        name:
+          $ref: "#/components/schemas/PlainText"
+        about: 
+          $ref: "#/components/schemas/LargePlainText"
+        nationality:
+          $ref: "#/components/schemas/Integer"
+    Album:
+      additionalProperties: false
+      type: object
+      properties:
+        id: 
+          $ref: "#/components/schemas/Integer"
+        name:
+          $ref: "#/components/schemas/PlainText"
+        description: 
+          $ref: "#/components/schemas/LargePlainText"
+        coverPage:
+         type: string
+         format: byte
+        year:
+          $ref: "#/components/schemas/Year"
+        artist:
+          $ref: "#/components/schemas/Integer"
+    Country:
+      additionalProperties: false
+      type: object
+      properties:
+        id:
+         $ref: "#/components/schemas/Integer"
+        name:
+          $ref: "#/components/schemas/PlainText"
+        alphaCode:
+          $ref: "#/components/schemas/AlphaCode"
+        nationality:
+          $ref: "#/components/schemas/PlainText"
+      
+        
+  responses:
+    Unauthorized:
+      description: Requires authentication
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorObject"
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorObject"
+    Default:
+      description: Something went Wrong
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorObject"
+
+  requestBodies:
+    Song:
+      description: New Song
+      required: true
+      content:
+        application/json:
+          schema:
+            additionalProperties: false
+            type: object
+            properties:
+              name:
+                $ref: "#/components/schemas/PlainText"
+              duration:
+                $ref: "#/components/schemas/Duration"
+    Album:
+      description: New Album
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              name:
+                $ref: "#/components/schemas/PlainText"
+              description: 
+                $ref: "#/components/schemas/LargePlainText"
+              coverPage:
+                type: string
+                format: byte
+              year:
+                $ref: "#/components/schemas/Year"
+
+    UserCredentials:
+      description: User credentials
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              nickname:
+                $ref: "#/components/schemas/UserNickname"
+              password:
+                type: string
+                format: password
+                maxLength: 32
+                pattern: ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,32}$
