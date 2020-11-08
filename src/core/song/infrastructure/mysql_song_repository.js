@@ -4,6 +4,7 @@ const db = require("../../../db/mysql");
 const InvalidValueError = require("../../../errors/invalid_value_error");
 const NoFoundError = require("../../../errors/no_found_error");
 const RejectedError = require("../../../errors/rejected_error");
+
 class MySqlSongRepository extends SongRepository {
   async list(page, limit, search) {
     const songs = await db.doQuery(
@@ -25,6 +26,7 @@ class MySqlSongRepository extends SongRepository {
       (song) => new Song(song.id, song.name, song.duration, song.album_id)
     );
   }
+
   async listByArtist(page, limit, artist) {
     const songs = await db.doQuery(
       `SELECT song.id,song.name,song.duration,song.album_id FROM song
@@ -37,6 +39,7 @@ class MySqlSongRepository extends SongRepository {
       (song) => new Song(song.id, song.name, song.duration, song.album_id)
     );
   }
+
   async find(criteria, value) {
     const song = await db.doQuery(
       `SELECT id,name,duration,album_id FROM song WHERE ${criteria} = ?  AND validity = true`,
@@ -50,6 +53,7 @@ class MySqlSongRepository extends SongRepository {
       song[0].album_id
     );
   }
+
   async create(song) {
     const artistId = await db.doQuery(
       `SELECT artist.id as value FROM artist
@@ -75,6 +79,7 @@ class MySqlSongRepository extends SongRepository {
     song.id = response.insertId;
     return song;
   }
+
   async update(song) {
     await this.find("id", song.id);
     const artistId = await db.doQuery(
@@ -103,6 +108,7 @@ class MySqlSongRepository extends SongRepository {
     ]);
     return song;
   }
+
   async delete(id) {
     const exists = await this.find("id", id);
     if (exists == null) throw new NoFoundError();

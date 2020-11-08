@@ -7,6 +7,7 @@ class SongFinder {
       throw new DiferentTypeError("SongRepository");
     this.repository = repository;
   }
+
   call(id) {
     return this.repository.find("id", id);
   }

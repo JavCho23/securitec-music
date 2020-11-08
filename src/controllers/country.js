@@ -2,6 +2,7 @@ const request = require("../helpers/request");
 const pagination = require("../helpers/pagination");
 const CountryLister = require("../core/country/aplication/country_lister");
 const CountryRepository = require("../core/country/infrastructure/mysql_country_repository");
+
 exports.list = async function (req, res) {
   try {
     const countryLister = new CountryLister(new CountryRepository());

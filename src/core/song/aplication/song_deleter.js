@@ -7,6 +7,7 @@ class SongDeleter {
       throw new DiferentTypeError("SongRepository");
     this.repository = repository;
   }
+
   call(id) {
     return this.repository.delete(id);
   }

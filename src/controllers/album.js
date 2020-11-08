@@ -8,6 +8,7 @@ const AlbumCreator = require("../core/album/aplication/album_creator");
 const AlbumUpdater = require("../core/album/aplication/album_updater");
 const Album = require("../core/album/domain/album");
 const AlbumDeleter = require("../core/album/aplication/album_deleter");
+
 exports.list = async function (req, res) {
   try {
     const albumLister = new AlbumLister(new AlbumRepository());
@@ -27,6 +28,7 @@ exports.list = async function (req, res) {
     res.status(error.responseCode).json({ message: error.message });
   }
 };
+
 exports.listByArtist = async function (req, res) {
   try {
     const albumLister = new AlbumListerByArtist(new AlbumRepository());
@@ -76,6 +78,7 @@ exports.create = async function (req, res) {
     res.status(error.responseCode).json({ message: error.message });
   }
 };
+
 exports.update = async function (req, res) {
   try {
     const albumUpdater = new AlbumUpdater(new AlbumRepository());

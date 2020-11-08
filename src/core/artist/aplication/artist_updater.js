@@ -7,6 +7,7 @@ class ArtistUpdater {
       throw new DiferentTypeError("ArtistRepository");
     this.repository = repository;
   }
+
   call(artist) {
     return this.repository.update(artist);
   }

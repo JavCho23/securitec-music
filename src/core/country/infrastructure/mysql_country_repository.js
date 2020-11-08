@@ -1,6 +1,7 @@
 const Country = require("../domain/country");
 const CountryRepository = require("../domain/country_repository");
 const db = require("../../../db/mysql");
+
 class MySqlCountryRepository extends CountryRepository {
   async list(page, limit, search) {
     const countries = await db.doQuery(

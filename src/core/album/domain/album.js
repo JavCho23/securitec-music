@@ -23,11 +23,13 @@ class Album {
     this.totalSongs = totalSongs;
     this.totalDuration = totalDuration;
   }
+
   calculateDetails(songs) {
     // TODO add sum of total duration
     this.totalDuration = "oe";
     this.totalSongs = songs.length;
   }
+
   toJson() {
     return {
       id: this.id,

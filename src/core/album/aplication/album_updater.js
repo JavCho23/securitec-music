@@ -7,6 +7,7 @@ class AlbumUpdater {
       throw new DiferentTypeError("AlbumRepository");
     this.repository = repository;
   }
+
   call(album) {
     return this.repository.update(album);
   }

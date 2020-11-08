@@ -7,6 +7,7 @@ class Login {
       throw new DiferentTypeError("UserRepository");
     this.repository = repository;
   }
+
   call(user) {
     return this.repository.login(user);
   }

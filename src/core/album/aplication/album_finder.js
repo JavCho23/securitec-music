@@ -7,6 +7,7 @@ class AlbumFinder {
       throw new DiferentTypeError("AlbumRepository");
     this.repository = repository;
   }
+
   call(id) {
     return this.repository.findDetails(id);
   }

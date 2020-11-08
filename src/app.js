@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/", routes.index);
+app.use("/api/v1", routes.index);
 
 const port = process.env.PORT || config.server.port;
 app.listen(port);

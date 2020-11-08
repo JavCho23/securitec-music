@@ -7,6 +7,7 @@ class SongUpdater {
       throw new DiferentTypeError("SongRepository");
     this.repository = repository;
   }
+
   call(song) {
     return this.repository.update(song);
   }

@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const config = require("../config.json");
 const InvalidValueError = require("../errors/invalid_value_error");
+
 const connection = mysql.createConnection({
   host: config.db.mysql.host,
   user: config.db.mysql.user,

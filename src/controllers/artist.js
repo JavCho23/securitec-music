@@ -7,6 +7,7 @@ const ArtistCreator = require("../core/artist/aplication/artist_creator");
 const Artist = require("../core/artist/domain/artist");
 const ArtistUpdater = require("../core/artist/aplication/artist_updater");
 const ArtistDeleter = require("../core/artist/aplication/artist_deleter");
+
 exports.list = async function (req, res) {
   try {
     const artistLister = new ArtistLister(new ArtistRepository());
@@ -51,6 +52,7 @@ exports.create = async function (req, res) {
     res.status(error.responseCode).json({ message: error.message });
   }
 };
+
 exports.update = async function (req, res) {
   try {
     const artistUpdater = new ArtistUpdater(new ArtistRepository());

@@ -10,7 +10,7 @@ const routes = express.Router();
 
 routes.use(response.setHeadersForCORS);
 
-routes.get("/", (req, res) => {
+routes.get("/", (_, res) => {
   res.status(200).json({ message: "Welcome to securitec music API" });
 });
 
@@ -20,7 +20,7 @@ routes.use("/artists", artist.routes);
 routes.use("/songs", song.routes);
 routes.use("/albums", album.routes);
 
-routes.use(function (req, res) {
+routes.use(function (_, res) {
   response.sendNotFound(res);
 });
 

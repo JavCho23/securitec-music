@@ -7,6 +7,7 @@ class SongListerByArtist {
       throw new DiferentTypeError("ArtistRepository");
     this.repository = repository;
   }
+
   call(page, limit, artist) {
     return this.repository.listByArtist(page, limit, artist);
   }

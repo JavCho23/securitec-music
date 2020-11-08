@@ -4,6 +4,7 @@ const album = require("../controllers/album");
 const song = require("../controllers/song");
 const routes = express.Router();
 const auth = require("../controllers/auth");
+
 routes.route("/").get(artist.list).post(auth.middleware, artist.create);
 routes
   .route("/:id")

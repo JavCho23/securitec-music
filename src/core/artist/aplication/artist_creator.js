@@ -7,6 +7,7 @@ class ArtistCreator {
       throw new DiferentTypeError("ArtistRepository");
     this.repository = repository;
   }
+
   call(artist) {
     return this.repository.create(artist);
   }

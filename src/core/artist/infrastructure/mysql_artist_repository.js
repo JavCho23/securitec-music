@@ -4,6 +4,7 @@ const db = require("../../../db/mysql");
 const RejectedError = require("../../../errors/rejected_error");
 const NoFoundError = require("../../../errors/no_found_error");
 const InvalidValueError = require("../../../errors/invalid_value_error");
+
 class MySqlArtistRepository extends ArtistRepository {
   async list(page, limit, search) {
     const artists = await db.doQuery(
@@ -15,6 +16,7 @@ class MySqlArtistRepository extends ArtistRepository {
         new Artist(artist.id, artist.name, artist.about, artist.nationality_id)
     );
   }
+
   async find(criteria, value) {
     const artist = await db.doQuery(
       `SELECT id,name,about,nationality_id FROM artist WHERE ${criteria} = ?  AND validity = true`,
@@ -28,6 +30,7 @@ class MySqlArtistRepository extends ArtistRepository {
       artist[0].nationality_id
     );
   }
+
   async create(artist) {
     let exists = true;
     try {
@@ -44,6 +47,7 @@ class MySqlArtistRepository extends ArtistRepository {
     artist.id = response.insertId;
     return artist;
   }
+
   async update(artist) {
     await this.find("id", artist.id);
     let exists = true;
@@ -65,6 +69,7 @@ class MySqlArtistRepository extends ArtistRepository {
     ]);
     return artist;
   }
+
   async delete(id) {
     const exists = await this.find("id", id);
     if (exists == null) throw new NoFoundError();

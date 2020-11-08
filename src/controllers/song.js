@@ -32,6 +32,7 @@ exports.list = async function (req, res) {
     res.status(error.responseCode).json({ message: error.message });
   }
 };
+
 exports.listByArtist = async function (req, res) {
   try {
     const songLister = new SongListerByArtist(new SongRepository());
@@ -51,6 +52,7 @@ exports.listByArtist = async function (req, res) {
     res.status(error.responseCode).json({ message: error.message });
   }
 };
+
 exports.listByAlbum = async function (req, res) {
   try {
     const songLister = new SongListerByAlbum(new SongRepository());
@@ -81,6 +83,7 @@ exports.read = async function (req, res) {
     res.status(error.responseCode).json({ message: error.message });
   }
 };
+
 exports.create = async function (req, res) {
   try {
     const songCreator = new SongCreator(new SongRepository());

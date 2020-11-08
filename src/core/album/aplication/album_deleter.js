@@ -7,6 +7,7 @@ class AlbumDeleter {
       throw new DiferentTypeError("AlbumRepository");
     this.repository = repository;
   }
+
   call(id) {
     return this.repository.delete(id);
   }

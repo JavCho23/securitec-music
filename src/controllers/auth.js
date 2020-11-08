@@ -14,10 +14,11 @@ exports.login = async function (req, res) {
     res.status(error.responseCode).json({ message: error.message });
   }
 };
+
 exports.middleware = async function (req, res, next) {
   try {
     const token = req.headers.authorization;
-    console.log(token)
+    console.log(token);
     const payload = JWT.verify(token, config.auth.secret);
     next();
   } catch (error) {

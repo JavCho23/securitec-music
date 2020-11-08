@@ -7,6 +7,7 @@ class AlbumCreator {
       throw new DiferentTypeError("AlbumRepository");
     this.repository = repository;
   }
+
   call(album) {
     return this.repository.create(album);
   }
