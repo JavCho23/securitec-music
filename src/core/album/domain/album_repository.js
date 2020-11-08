@@ -3,6 +3,7 @@ class AlbumRepository {
   async listByArtist(page, limit, artist) {}
   async find(criteria, value) {}
   async create(album) {}
+  async update(album) {}
   async findDetails(id) {}
 }
 
