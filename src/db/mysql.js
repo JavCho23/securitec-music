@@ -3,10 +3,10 @@ const config = require("../config.json");
 const InvalidValueError = require("../errors/invalid_value_error");
 
 const connection = mysql.createConnection({
-  host: config.db.mysql.host,
-  user: config.db.mysql.user,
-  password: config.db.mysql.password,
-  database: config.db.mysql.database,
+  host: process.env.DB_HOST || config.db.mysql.host,
+  user: process.env.DB_USER || config.db.mysql.user,
+  password: process.env.DB_PASS || config.db.mysql.password,
+  database: process.env.DB_NAME || config.db.mysql.database,
   typeCast: function castField(field, useDefaultTypeCasting) {
     if (field.type === "BIT" && field.length === 1) {
       const bytes = field.buffer();
