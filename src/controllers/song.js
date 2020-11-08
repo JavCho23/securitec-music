@@ -7,6 +7,10 @@ const SongCreator = require("../core/song/aplication/song_creator");
 const Song = require("../core/song/domain/song");
 const SongListerByArtist = require("../core/song/aplication/song_lister_by_artist");
 const SongListerByAlbum = require("../core/song/aplication/song_lister_by_album");
+const SongUpdater = require("../core/song/aplication/song_updater");
+
+// TODO Refactor repeat code in lists
+
 exports.list = async function (req, res) {
   try {
     const songLister = new SongLister(new SongRepository());
@@ -83,6 +87,24 @@ exports.create = async function (req, res) {
       new Song(0, req.body.name, req.body.duration, req.params.id)
     );
     res.status(201).json(song.toJson());
+  } catch (error) {
+    console.log(error);
+    res.status(error.responseCode).json({ message: error.message });
+  }
+};
+
+exports.update = async function (req, res) {
+  try {
+    const songUpdater = new SongUpdater(new SongRepository());
+    const song = await songUpdater.call(
+      new Song(
+        req.params.idSong,
+        req.body.name,
+        req.body.duration,
+        req.params.id
+      )
+    );
+    res.status(200).json(song.toJson());
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });
