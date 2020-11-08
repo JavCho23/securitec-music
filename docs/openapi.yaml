@@ -525,9 +525,9 @@ components:
           maxLength: 512
           pattern: ^[^:$#@^&*]+$
     
-    UserNickname:
+    Username:
       type: string
-      maxLength: 24
+      maxLength: 32
       pattern: ^[a-zA-Z0-9]+$
 
     Song:
@@ -669,8 +669,8 @@ components:
             type: object
             additionalProperties: false
             properties:
-              nickname:
-                $ref: "#/components/schemas/UserNickname"
+              user:
+                $ref: "#/components/schemas/Username"
               password:
                 type: string
                 format: password
