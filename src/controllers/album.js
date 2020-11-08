@@ -5,8 +5,9 @@ const AlbumRepository = require("../core/album/infrastructure/mysql_album_reposi
 const AlbumListerByArtist = require("../core/album/aplication/album_lister_by_artist");
 const AlbumFinder = require("../core/album/aplication/album_finder");
 const AlbumCreator = require("../core/album/aplication/album_creator");
-const Album = require("../core/album/domain/album");
 const AlbumUpdater = require("../core/album/aplication/album_updater");
+const Album = require("../core/album/domain/album");
+const AlbumDeleter = require("../core/album/aplication/artist_deleter");
 exports.list = async function (req, res) {
   try {
     const albumLister = new AlbumLister(new AlbumRepository());
@@ -89,6 +90,17 @@ exports.update = async function (req, res) {
       )
     );
     res.status(201).json(album.toJson());
+  } catch (error) {
+    console.log(error);
+    res.status(error.responseCode).json({ message: error.message });
+  }
+};
+
+exports.delete = async function (req, res) {
+  try {
+    const albumDeleter = new AlbumDeleter(new AlbumRepository());
+    await albumDeleter.call(req.params.id);
+    res.status(204).json({});
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });

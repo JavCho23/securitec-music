@@ -4,6 +4,7 @@ class AlbumRepository {
   async find(criteria, value) {}
   async create(album) {}
   async update(album) {}
+  async delete(id) {}
   async findDetails(id) {}
 }
 
