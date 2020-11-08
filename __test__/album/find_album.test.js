@@ -7,6 +7,6 @@ describe("Find a album ", () => {
     const albumFinder = new AlbumFinder(new AlbumRepository());
     const album = await albumFinder.call(3); //Album id must exist
     db.connection.destroy();
-    expect(typeof album == Album).toBe(false);
+    expect(!album.id).toBe(false);
   });
 });

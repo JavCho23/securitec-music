@@ -8,6 +8,6 @@ describe("Create a artist ", () => {
     const artistFinder = new ArtistFinder(new ArtistRepository());
     const artist = await artistFinder.call(5); //Artist id must exist
     db.connection.destroy();
-    expect(typeof artist == Artist).toBe(false);
+    expect(!artist.id).toBe(false);
   });
 });

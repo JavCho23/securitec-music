@@ -10,6 +10,6 @@ describe("Create a artist ", () => {
       new Artist(0, randomString(), randomString(), 4)
     ); //Nationality id must exist
     db.connection.destroy();
-    expect(typeof artist == Artist).toBe(false);
+    expect(!artist.id).toBe(false);
   });
 });
