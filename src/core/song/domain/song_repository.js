@@ -4,6 +4,7 @@ class SongRepository {
   async listByAlbum(page, limit, album) {}
   async create(song) {}
   async update(song) {}
+  async delete(id) {}
   async find(criteria, id) {}
 }
 

@@ -8,6 +8,7 @@ const Song = require("../core/song/domain/song");
 const SongListerByArtist = require("../core/song/aplication/song_lister_by_artist");
 const SongListerByAlbum = require("../core/song/aplication/song_lister_by_album");
 const SongUpdater = require("../core/song/aplication/song_updater");
+const SongDeleter = require("../core/song/aplication/song_deleter");
 
 // TODO Refactor repeat code in lists
 
@@ -105,6 +106,17 @@ exports.update = async function (req, res) {
       )
     );
     res.status(200).json(song.toJson());
+  } catch (error) {
+    console.log(error);
+    res.status(error.responseCode).json({ message: error.message });
+  }
+};
+
+exports.delete = async function (req, res) {
+  try {
+    const songDeleter = new SongDeleter(new SongRepository());
+    await songDeleter.call(req.params.id);
+    res.status(204).json({});
   } catch (error) {
     console.log(error);
     res.status(error.responseCode).json({ message: error.message });
