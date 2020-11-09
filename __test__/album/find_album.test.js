@@ -1,5 +1,4 @@
 const AlbumFinder = require("../../src/core/album/aplication/album_finder");
-const Album = require("../../src/core/album/domain/album");
 const AlbumRepository = require("../../src/core/album/infrastructure/mysql_album_repository");
 const db = require("../../src/db/mysql");
 describe("Find a album ", () => {

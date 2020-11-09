@@ -1,7 +1,5 @@
 const ArtistFinder = require("../../src/core/artist/aplication/artist_finder");
-const Artist = require("../../src/core/artist/domain/artist");
 const ArtistRepository = require("../../src/core/artist/infrastructure/mysql_artist_repository");
-const { randomString } = require("../shared/random_string");
 const db = require("../../src/db/mysql");
 describe("Create a artist ", () => {
   test("Should register", async () => {
